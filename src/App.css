@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+
+*{
+  margin:0;
+  padding:0;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background-color:#fafafa;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.inputWrapper, .resultsWrapper{
+margin: 1em auto 0 auto;
+padding: 0.5em
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+.inputWrapper{
+  height:4.5rem;
+  max-width:400px;
+  border:2px solid blanchedalmond;  
+}
+
+.searchBox{
+  margin: 1em 0 0.5em 0;
+  height:2rem;
+  max-height: 3rem;
+}
+
+.progressBar{
+  width:60%;
+}
+
+table{
+  font-size: 1rem;
+  color:black;
+  font-family: monospace;
+  border:2px solid blanchedalmond;
+  border-radius:12px;
+  padding:calc(1.2em + 1vh) calc(1em + 2vw) calc(0.6em + 0.5vh) calc(1em + 2vw) ;
+  background-color:white;
+  height:320px;
+  width:360px;
+  display:flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
+
+tbody{
+  color:white;
+  font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+tr.pageInfo{
+  color:black;
+  font-weight:400;
 }
+
+
+
+thead>tr{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+th{
+  padding: 0.5rem 1rem;
+  color:black;
+}
+
+th#id{
+  align-self:flex-start;
+}
+
+th#year{
+
+  margin-left:2rem;
+
+}
+
+td{
+  padding:0.5em 1em;
+  border-radius:5px;
+  height:20px;
+  align-self: center;
+  justify-self:center;
+}
+
+
+
+
+
+
