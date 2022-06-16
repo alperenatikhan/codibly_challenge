@@ -10,7 +10,7 @@ export default function PageController({modalOpen, setModalOpen, urlLink, curren
             <>
             <ButtonGroup size='medium' sx={{ margin: '1rem'}} >
                 <Button classname= 'pageButton' startIcon={<ChevronLeft/>} onClick={()=> currentPage >1 && setCurrentPage(currentPage-1)} disabled={ currentPage==1 || (searchId && searchResults.length==1)}>Previous </Button>
-                <Button startIcon={<Share/>} onClick={() => setModalOpen(true)}> Share</Button>
+                <Button startIcon={<Share/>} onClick={() => setModalOpen(!modalOpen)}> Share</Button>
                 <Button endIcon={<ChevronRight/>} onClick={()=> pageCount > currentPage && setCurrentPage(currentPage+1)} disabled={currentPage==pageCount || (searchId && searchResults.length==1)} > Next </Button>
             </ButtonGroup>
             </>
