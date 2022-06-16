@@ -39,7 +39,7 @@ const [copySuccess, setCopySuccess]= useState(false)
 
 function generateLink(searchId,currentPage){
     
-    let pageLink= `localhost:3000`
+    let pageLink= `https://codibly-challenge.vercel.app/`
     
     if (searchId){
     pageLink = `${pageLink}/id/${searchId}`
