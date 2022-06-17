@@ -124,15 +124,20 @@ const searchResults= useMemo(()=>filterSearch(searchId),[searchId,tableData] )
 (searchId && searchResults.length==0)? null:
 (tableData != 'loading' && tableData!='error') && <PageController modalOpen={modalOpen} setModalOpen={setModalOpen} urlLink={urlLink} currentPage={currentPage} setCurrentPage= {setCurrentPage} pageCount={pageCount(tableData)} searchResults={searchResults} searchId={searchId}/>}
 
+
+
+
 </Grid>
 </Grid>
+
+{(searchId && searchResults.length==0)? null
+:modalOpen && <Container display='flex' flexDirection='row' justifyContent= 'space-between' align='center'> <CopyToClipboard text={urlLink} onCopy={handleCopy}>
+<Button startIcon={<ContentCopy/> }/></CopyToClipboard> {copySuccess ? <Typography variant='body' color='primary'> Copied Successfully </Typography>  :<Typography variant='body'sx={{padding:'0.5em',backgroundColor:'azure'}} >{urlLink}</Typography>} </Container> }
+
 
 </Container>
 
-{modalOpen && <Container display='flex' flexDirection='row' justifyContent= 'space-between' align='center'> <CopyToClipboard text={urlLink} onCopy={handleCopy}>
 
-<Button startIcon={<ContentCopy/> }/></CopyToClipboard> <Typography variant='body'sx={{marginLeft:'0.5em', padding:'0.5em',backgroundColor:'azure'}} >{urlLink}</Typography> </Container> }
-{copySuccess && <Container align='center'> <Typography variant='body' color='primary'> Copied Successfully </Typography> </Container>}
 </article>
 </main>
 )
