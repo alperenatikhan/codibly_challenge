@@ -25,7 +25,7 @@ let {idParam, pageParam,perPageParam}= useParams()
    
 
 
-    useEffect(()=>{setTimeout(() => fetchData(), 2000)},[] )
+    useEffect(()=>{setTimeout(() => fetchData(), 500)},[] )
 
 const [tableData,setTableData ]= useState('loading')
 const fetchData = () => axios.get('https://reqres.in/api/products').then((results) => results.data).then(item=> item.data).then(item=> setTableData(item)).catch(() => setTableData('error'))
