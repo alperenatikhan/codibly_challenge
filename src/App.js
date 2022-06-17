@@ -48,11 +48,12 @@ function generateLink(searchId,currentPage){
     pageLink = `${pageLink}/page/${currentPage}/resultperpage/${perPage}`
     } 
 
-
     
     return pageLink
 
 }
+
+
 
 useEffect(()=>{
 
