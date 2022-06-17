@@ -13,6 +13,8 @@ export default function PageController({modalOpen, setModalOpen, urlLink, curren
                 <Button startIcon={<Share/>} onClick={() => setModalOpen(!modalOpen)}> Share</Button>
                 <Button endIcon={<ChevronRight/>} onClick={()=> pageCount > currentPage && setCurrentPage(currentPage+1)} disabled={currentPage==pageCount || (searchId && searchResults.length==1)} > Next </Button>
             </ButtonGroup>
+
+
             </>
         
 

@@ -38,8 +38,8 @@ table{
   border-radius:12px;
   padding:calc(1.2em + 1vh) calc(1em + 2vw) calc(0.6em + 0.5vh) calc(1em + 2vw) ;
   background-color:white;
-  height:320px;
-  width:360px;
+  
+  max-width:360px;
   display:flex;
   flex-direction: column;
 

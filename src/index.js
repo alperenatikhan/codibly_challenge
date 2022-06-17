@@ -16,7 +16,7 @@ root.render(
 <Routes>
 <Route path="/" element={<App />} />
 <Route path= {`/id/:idParam`} element ={<App />}/>
-<Route path= {`/page/:pageParam`} element ={<App />}/>v
+<Route path= {`/page/:pageParam/resultperpage/:perPageParam`} element ={<App />}/>v
     </Routes>
     </BrowserRouter>
 );

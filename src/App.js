@@ -19,7 +19,7 @@ export default function App() {
     // pageParam =>currentPage  idParam => searchId
     //Router is defined in indexjs
 
-let {idParam, pageParam}= useParams()
+let {idParam, pageParam,perPageParam}= useParams()
 
 
    
@@ -29,13 +29,14 @@ let {idParam, pageParam}= useParams()
 
 const [tableData,setTableData ]= useState('loading')
 const fetchData = () => axios.get('https://reqres.in/api/products').then((results) => results.data).then(item=> item.data).then(item=> setTableData(item)).catch(() => setTableData('error'))
-const pageCount=(obj)=> (obj==='loading' || obj==='error' || obj== null)? null: Math.ceil(obj.length/5)
+const pageCount=(obj)=> (obj==='loading' || obj==='error' || obj== null)? null: Math.ceil(obj.length/perPage)
 const [searchId,setSearchId]= useState(parseInt(idParam) ? parseInt(idParam): null)
 const [digitWarning,setDigitWarning]= useState(false)
 const [currentPage, setCurrentPage] = useState(1)
 const [urlLink,setUrlLink] = useState('localhost:3000/')
 const [modalOpen, setModalOpen] = useState(false)
 const [copySuccess, setCopySuccess]= useState(false)
+const [perPage,setPerPage] = useState(perPageParam ? parseInt(perPageParam):5 )
 
 function generateLink(searchId,currentPage){
     
@@ -44,7 +45,7 @@ function generateLink(searchId,currentPage){
     if (searchId){
     pageLink = `${pageLink}/id/${searchId}`
     }else if(currentPage){
-    pageLink = `${pageLink}/page/${currentPage}`
+    pageLink = `${pageLink}/page/${currentPage}/resultperpage/${perPage}`
     } 
 
 
@@ -55,9 +56,9 @@ function generateLink(searchId,currentPage){
 
 useEffect(()=>{
 
-    setUrlLink(()=>generateLink(searchId,currentPage))
+    setUrlLink(()=>generateLink(searchId,currentPage,perPage))
     
-    } ,[searchId, currentPage])
+    } ,[searchId, currentPage,perPage])
 
 
 //If user wants to go to a page-number which does not exist, this function prevents it by resetting the page to the biggest or lowest existing page-number.
@@ -99,14 +100,14 @@ setTimeout(()=> setCopySuccess(false), 3000)
     
 
 
-const pageData = useMemo(() =>tableData.slice(5 *(currentPage-1) , 5 * currentPage),[tableData,currentPage] )
+const pageData = useMemo(() =>tableData.slice(perPage *(currentPage-1) , perPage * currentPage),[tableData,currentPage,perPage] )
 const filterSearch = (keyword) => (tableData!='error' && tableData!='loading') && tableData.filter(item=> item.id== keyword) 
 const searchResults= useMemo(()=>filterSearch(searchId),[searchId,tableData] )
 
 
     return (
 <main>
-<SearchBar tableData={tableData} searchId={searchId} setSearchId={setSearchId} setDigitWarning={setDigitWarning} digitWarning={digitWarning}/>
+<SearchBar perPage={perPage} setPerPage={setPerPage} tableData={tableData} searchId={searchId} setSearchId={setSearchId} setDigitWarning={setDigitWarning} digitWarning={digitWarning}/>
 
 
 <article>
